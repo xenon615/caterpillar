@@ -305,6 +305,7 @@ version = "0.15.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bb2a21c9f3306676077a88700bb8f354be779cf9caba9c21e94da9e696751af4"
 dependencies = [
+ "bevy_dylib",
  "bevy_internal",
 ]
 
@@ -469,6 +470,15 @@ dependencies = [
  "bevy_time",
  "bevy_utils",
  "const-fnv1a-hash",
+]
+
+[[package]]
+name = "bevy_dylib"
+version = "0.15.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b120f96b1f18f3aac28729b6d7765114486b64df4c2af3314fe2bf30d4eb11c3"
+dependencies = [
+ "bevy_internal",
 ]
 
 [[package]]
@@ -725,15 +735,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b53f0cf879a0682280937f515ecf00ab2140f7224881d6a621f40093a36a2ef6"
 dependencies = [
  "glam",
-]
-
-[[package]]
-name = "bevy_panorbit_camera"
-version = "0.21.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "55e54a2fbf69a596957134b387093009c1d4dc046a6c9f3d62f37230525dca19"
-dependencies = [
- "bevy",
 ]
 
 [[package]]
@@ -1258,7 +1259,6 @@ version = "0.1.0"
 dependencies = [
  "avian3d",
  "bevy",
- "bevy_panorbit_camera",
 ]
 
 [[package]]

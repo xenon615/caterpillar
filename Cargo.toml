@@ -15,11 +15,7 @@ codegen-units = 1
 
 
 [dependencies]
-# bevy-inspector-egui= "0.28"
 avian3d = "0.2.0"
-
-bevy_panorbit_camera= "0.21.2"
-
 [dependencies.bevy]
 version = "0.15.1"
 
@@ -62,8 +58,6 @@ features = [
 "webgl2",	#Enable some limitations to be able to use WebGL2. Please refer to the WebGL2 and WebGPU section of the examples README for more information on how to run Wasm builds with WebGPU.
 # "x11	",	#X11 display server support
 "zstd",	
-# "dynamic_linking",  #FOR DEBUG!!!
+"dynamic_linking",  #FOR DEBUG!!!
 ]
 
-# wasm-bindgen --no-typescript --target web  --out-dir ./web   --out-name "step"  ./target/wasm32-unknown-unknown/release/siege.wasm
-# cargo build --target wasm32-unknown-unknown --release
