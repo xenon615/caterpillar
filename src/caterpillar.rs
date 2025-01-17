@@ -1,5 +1,5 @@
-use std::{f32::consts::PI, time::Duration};
-use bevy::{prelude::*, time::common_conditions::on_timer};
+use std::f32::consts::PI;
+use bevy::prelude::*;
 use avian3d::prelude::*;
 
 pub struct CaterpillarPlugin;
@@ -23,9 +23,6 @@ pub struct M{
     frict: Handle<StandardMaterial>,
     slip: Handle<StandardMaterial>
 }
-
-// #[derive(Component)]
-// pub struct BackFoot(bool);
 
 // const ANGLE_LIMIT: (f32, f32) = (PI / 6., PI * 2./3.);
 const ANGLE_LIMIT: (f32, f32) = (PI / 3., PI / 2.3);
@@ -116,11 +113,11 @@ fn startup (
 
 fn pull_changed(
     tr: Trigger<IsPullChanged>, 
-    mut foots_q: Query<(&mut Friction, &mut MeshMaterial3d<StandardMaterial>, &mut ColliderDensity, &mut GravityScale)>,
+    mut foots_q: Query<(&mut Friction, &mut MeshMaterial3d<StandardMaterial>)>,
     mats: Res<M>,
 
 ) {
-    let Ok([(mut f_f, mut m_f, mut d_f, mut g_f), (mut f_b, mut m_b, mut d_b, mut g_b)]) = foots_q.get_many_mut(tr.event().0) else {
+    let Ok([(mut f_f, mut m_f), (mut f_b, mut m_b)]) = foots_q.get_many_mut(tr.event().0) else {
         return;
     };
     
@@ -129,21 +126,11 @@ fn pull_changed(
         *f_b = Friction::new(0.).with_combine_rule(CoefficientCombine::Min);
         m_f.0 = mats.frict.clone_weak();
         m_b.0 = mats.slip.clone_weak();
-        d_b.0 = 1.;
-        d_f.0 = 10.;
-        g_b.0 = 0.;
-        g_f.0 = 10.;
-
     } else {
         *f_b = Friction::new(1.).with_combine_rule(CoefficientCombine::Max);
         *f_f = Friction::new(0.).with_combine_rule(CoefficientCombine::Min);
         m_b.0 = mats.frict.clone_weak();
         m_f.0 = mats.slip.clone_weak();
-        d_f.0 = 1.;
-        d_b.0 = 10.;
-        g_f.0 = 0.;
-        g_b.0 = 10.;
-
     }
 
 }

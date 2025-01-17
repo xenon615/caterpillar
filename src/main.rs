@@ -7,16 +7,7 @@ use bevy::{
         WindowResolution
     }
 };
-use avian3d::{
-    prelude::{
-        PhysicsDebugPlugin, 
-        RigidBody
-    }, 
-    PhysicsPlugins
-};
-
-// use bevy_inspector_egui::quick::WorldInspectorPlugin;
-
+use avian3d::PhysicsPlugins;
 
 mod camera;
 mod env;
@@ -41,8 +32,6 @@ fn main() {
         ),
 
         PhysicsPlugins::default(),
-        // PhysicsDebugPlugin::default(),
-        // WorldInspectorPlugin::new(),
         camera::CameraPlugin,
         env::EnvPlugin,
         caterpillar::CaterpillarPlugin
